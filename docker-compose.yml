@@ -1,7 +1,7 @@
 version: '3'
 services:
   jenkins:
-    image: mikeawto/jenkins:lts
+    image: cloudsheger/jenkins-docker-latest
     container_name: jenkins_docker_image_1
     ports:
       - "8080:8080"
@@ -10,7 +10,7 @@ services:
       - jenkins_data:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
-      - jenkinsnet
+      - monitor-net
 
   sonarqube:
     image: sonarqube:latest
@@ -20,7 +20,7 @@ services:
     volumes:
       - sonarqube_data:/opt/sonarqube/data
     networks:
-      - jenkinsnet
+      - monitor-net
 
   artifactory:
     #image: docker.bintray.io/jfrog/artifactory-oss
@@ -31,7 +31,7 @@ services:
     volumes:
       - artifactory_data:/var/opt/jfrog/artifactory
     networks:
-      - jenkinsnet
+      - monitor-net
     restart: always
     ulimits:
       nproc: 65535
@@ -45,4 +45,4 @@ volumes:
   artifactory_data:
 
 networks:
-  jenkinsnet:
+  monitor-net:
