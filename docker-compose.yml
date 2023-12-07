@@ -23,7 +23,6 @@ services:
       - monitor-net
 
   artifactory:
-    #image: docker.bintray.io/jfrog/artifactory-oss
     image: docker.bintray.io/jfrog/artifactory-oss:latest
     container_name: artifactory_docker_image_3
     ports:
@@ -37,7 +36,7 @@ services:
       nproc: 65535
       nofile:
         soft: 32000
-        hard: 40000  
+        hard: 40000
 
 volumes:
   jenkins_data:
