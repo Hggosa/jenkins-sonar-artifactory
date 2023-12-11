@@ -4,3 +4,7 @@ USER root
 RUN apt-get update && apt-get install -y maven && apt-get install -y docker.io
 # drop back to the regular jenkins user - good practice
 USER jenkins
+
+# your docker image does not have MAVEN, i am checking this one
+
+# after run docker-compose build and docker-compose up -d
